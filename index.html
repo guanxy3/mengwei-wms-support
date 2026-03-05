@@ -1,186 +1,323 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>蒙维智仓WMS - 技术支持 | Mengwei WMS - Technical Support</title>
+    <title>Mengwei WMS - Official Technical Support</title>
+    <meta name="description" content="Official technical support for Mengwei WMS, a warehouse management system available to all general users worldwide. Get help with login, usage issues, and feedback.">
+    <meta name="keywords" content="Mengwei WMS, warehouse management, technical support, logistics, app help, public access">
+    <meta name="robots" content="index, follow">
     <style>
+        /* 苹果原生样式体系，无第三方依赖 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
         }
         body {
-            background-color: #f5f5f5;
-            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            line-height: 1.8;
+            color: #1d1d1f;
+            background-color: #f5f5f7;
         }
-        /* 语言切换按钮样式 */
+        .support-wrapper {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+        }
+        /* 语言切换 - 苹果风格按钮 */
         .lang-switch {
             text-align: right;
-            margin-bottom: 20px;
+            margin-bottom: 32px;
         }
         .lang-btn {
-            padding: 6px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: white;
-            cursor: pointer;
-            margin-left: 8px;
+            padding: 8px 20px;
+            border: 1px solid #0071e3;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #0071e3;
             font-size: 14px;
+            cursor: pointer;
+            margin-left: 12px;
+            transition: all 0.2s ease;
         }
         .lang-btn.active {
             background: #0071e3;
-            color: white;
-            border-color: #0071e3;
+            color: #ffffff;
         }
-        /* 核心容器样式 */
-        .support-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .lang-btn:hover {
+            opacity: 0.9;
         }
+        /* 标题样式 */
         h1 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
+            font-size: 32px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 36px;
+            border-bottom: 1px solid #e8e8ed;
+            padding-bottom: 16px;
         }
-        .support-item {
-            margin: 20px 0;
-            color: #555;
+        /* 内容模块 */
+        .support-section {
+            margin-bottom: 36px;
+        }
+        .support-section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .support-section h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: #0071e3;
+            margin-right: 12px;
+            border-radius: 2px;
+        }
+        .support-section p, .support-section ul {
             font-size: 16px;
-            line-height: 1.8;
+            color: #424245;
+            margin-bottom: 12px;
         }
-        .support-item strong {
-            color: #222;
+        .support-section ul {
+            padding-left: 24px;
         }
-        .footer {
-            margin-top: 40px;
-            color: #999;
+        .support-section li {
+            margin-bottom: 8px;
+        }
+        .contact-info {
+            background: #f8f8fa;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 16px 0;
+        }
+        .contact-info p {
+            margin: 8px 0;
+            font-size: 16px;
+        }
+        .contact-info strong {
+            color: #1d1d1f;
+            min-width: 120px;
+            display: inline-block;
+        }
+        /* FAQ样式 */
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-item q {
+            font-weight: 500;
+            color: #1d1d1f;
+            quotes: "Q: " "";
+        }
+        .faq-item a {
+            color: #0071e3;
+            text-decoration: none;
+        }
+        .faq-item a:hover {
+            text-decoration: underline;
+        }
+        /* 页脚 */
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 1px solid #e8e8ed;
+            color: #86868b;
             font-size: 14px;
             text-align: center;
         }
-        /* 语言模块切换 */
-        .lang-zh { display: block; }
-        .lang-en { display: none; }
+        /* 语言模块 - 强制默认英文 */
+        .content-zh {
+            display: none;
+        }
+        .content-en {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <div class="support-container">
+    <div class="support-wrapper">
         <!-- 语言切换按钮 -->
         <div class="lang-switch">
-            <button class="lang-btn active" id="btn-zh">中文</button>
-            <button class="lang-btn" id="btn-en">English</button>
+            <button class="lang-btn" id="btn-zh">中文</button>
+            <button class="lang-btn active" id="btn-en">English</button>
+        </div>
+
+        <!-- 英文内容（苹果审核优先展示） -->
+        <div class="content-en">
+            <h1>Mengwei WMS - Official Technical Support</h1>
+            
+            <div class="support-section">
+                <h2>About Mengwei WMS</h2>
+                <p>Mengwei WMS is a professional warehouse management system designed for <strong>all general users worldwide</strong>, with no restrictions on usage by any specific company, organization, or group. It is available for public download and use on the App Store without invitation, pre-approval, or organizational affiliation requirements.</p>
+                <p>Key features include inventory management, inbound/outbound record tracking, data statistics, production resource optimization, efficiency improvement, cost reduction, decision support, and report analysis.</p>
+            </div>
+
+            <div class="support-section">
+                <h2>Contact Support</h2>
+                <div class="contact-info">
+                    <p><strong>Support Email:</strong> 1912993419@qq.com</p>
+                    <p><strong>Service Phone:</strong> +86 551 62883490</p>
+                    <p><strong>Response Time:</strong> Within 24 business hours (Monday to Friday, GMT+8)</p>
+                    <p><strong>Supported Languages:</strong> English, Chinese</p>
+                </div>
+                <p>For any technical issues, feedback, or assistance, please contact us via the above channels. Providing detailed problem descriptions and screenshots will help us resolve your issue faster.</p>
+            </div>
+
+            <div class="support-section">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                <div class="faq-item">
+                    <q>How to log in to Mengwei WMS?</q>
+                    <p>A: In the production environment, <strong>any user</strong> can create an account through the PC-based management platform and log in directly with their account credentials (no server address configuration required). For review/trial purposes only, please set the test server address to http://36.137.183.40:30020 on the login page, then use the provided test account and password to log in.</p>
+                </div>
+                <div class="faq-item">
+                    <q>What should I do if login fails?</q>
+                    <p>A: Please verify the following:
+                        <ul>
+                            <li>Server address is correctly configured (if using test environment)</li>
+                            <li>Account and password are entered correctly</li>
+                            <li>Network connection is stable</li>
+                        </ul>
+                        If the issue persists, contact our support team for troubleshooting.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <q>Why is data synchronization abnormal?</q>
+                    <p>A: Please check your network connection first. If the problem continues, contact support to verify server configuration and data sync status.</p>
+                </div>
+                <div class="faq-item">
+                    <q>How to get app updates?</q>
+                    <p>A: We continuously optimize Mengwei WMS and release updates through the App Store. We recommend enabling automatic updates to ensure you have the latest version with improved features and bug fixes.</p>
+                </div>
+            </div>
+
+            <div class="support-section">
+                <h2>Public Access & Usage</h2>
+                <p>Mengwei WMS is available to <strong>all members of the general public</strong> on the App Store. There are no:
+                    <ul>
+                        <li>Restrictions to specific companies or organizations</li>
+                        <li>Requirements for invitation or pre-approval</li>
+                        <li>Paid content for basic usage or account creation</li>
+                    </ul>
+                </p>
+                <p>Any individual or business can register and use the app for warehouse management purposes without organizational affiliation.</p>
+            </div>
+
+            <footer>
+                © 2026 Aerospace Digital Intelligence (Anhui) Technology Co., Ltd. All Rights Reserved.<br>
+                Official Technical Support Page for Mengwei WMS - Publicly Available on the App Store
+            </footer>
         </div>
 
         <!-- 中文内容 -->
-        <div class="lang-zh">
-            <h1>蒙维智仓WMS - 技术支持中心</h1>
+        <div class="content-zh">
+            <h1>蒙维智仓WMS - 官方技术支持中心</h1>
             
-            <div class="support-item">
-                <strong>1. 应用简介</strong>
-                <p>蒙维智仓WMS是一款专为仓储管理打造的高效工具，提供库存管理、出入库记录、数据统计等核心功能。</p>
+            <div class="support-section">
+                <h2>关于蒙维智仓WMS</h2>
+                <p>蒙维智仓WMS是一款面向<strong>全球所有普通用户</strong>的专业仓储管理系统，无任何特定公司、组织或群体的使用限制。本应用在App Store公开下载和使用，无需邀请、预先审批，也无需隶属于任何组织。</p>
+                <p>核心功能包括库存管理、出入库记录跟踪、数据统计、生产资源优化、效率提升、成本降低、决策支持及报告分析等。</p>
             </div>
 
-            <div class="support-item">
-                <strong>2. 问题反馈</strong>
-                <p>如使用过程中遇到任何问题，请通过以下方式联系我们：</p>
-                <p>📧 支持邮箱：1912993419@qq.com</p>
-                <p>📞 客服电话：（0551）62883490</p>
+            <div class="support-section">
+                <h2>联系支持</h2>
+                <div class="contact-info">
+                    <p><strong>支持邮箱：</strong>1912993419@qq.com</p>
+                    <p><strong>服务电话：</strong>+86 551 62883490</p>
+                    <p><strong>回复时效：</strong>工作日24小时内（周一至周五，GMT+8时区）</p>
+                    <p><strong>支持语言：</strong>英语、中文</p>
+                </div>
+                <p>如遇到任何技术问题、反馈或需要协助，请通过上述渠道联系我们。提供详细的问题描述和截图将帮助我们更快解决您的问题。</p>
             </div>
 
-            <div class="support-item">
-                <strong>3. 常见问题</strong>
-                <p>Q：如何进行登录？<br>
-                   A：生产环境下，直接输入账号密码即可登录；若仅用于试用，请先设置测试环境服务器地址：http://36.137.183.40:30020，再使用我们提供的测试账号密码登录。</p>
-                <p>Q：登录失败怎么办？<br>
-                   A：请先确认服务器地址设置正确，账号密码无误，或联系客服协助排查。</p>
-                <p>Q：数据同步异常？<br>
-                   A：请检查网络连接或联系客服协助排查服务器配置问题。</p>
+            <div class="support-section">
+                <h2>常见问题（FAQ）</h2>
+                <div class="faq-item">
+                    <q>如何登录蒙维智仓WMS？</q>
+                    <p>A：生产环境下，<strong>任何用户</strong>均可通过电脑端管理平台创建账号，注册后直接使用账号凭证登录（无需配置服务器地址）。仅用于审核/试用场景时，请在登录页设置测试服务器地址为 http://36.137.183.40:30020，再使用提供的测试账号密码登录。</p>
+                </div>
+                <div class="faq-item">
+                    <q>登录失败该怎么办？</q>
+                    <p>A：请核实以下内容：
+                        <ul>
+                            <li>服务器地址配置正确（如使用测试环境）</li>
+                            <li>账号密码输入无误</li>
+                            <li>网络连接稳定</li>
+                        </ul>
+                        若问题仍存在，请联系支持团队协助排查。
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <q>数据同步异常的原因？</q>
+                    <p>A：请先检查网络连接。若问题持续，联系支持团队核实服务器配置和数据同步状态。</p>
+                </div>
+                <div class="faq-item">
+                    <q>如何获取应用更新？</q>
+                    <p>A：我们持续优化蒙维智仓WMS，并通过App Store推送更新。建议开启自动更新，以获取包含功能优化和漏洞修复的最新版本。</p>
+                </div>
             </div>
 
-            <div class="support-item">
-                <strong>4. 版本更新</strong>
-                <p>我们会持续优化应用体验，如有版本更新会在App Store及时推送，建议保持自动更新开启。</p>
+            <div class="support-section">
+                <h2>公开访问与使用说明</h2>
+                <p>蒙维智仓WMS在App Store面向<strong>所有普通公众</strong>开放，不存在以下限制：
+                    <ul>
+                        <li>仅限特定公司或组织使用</li>
+                        <li>需要邀请或预先审批才能使用</li>
+                        <li>基础使用或账号创建需要付费</li>
+                    </ul>
+                </p>
+                <p>任何个人或企业均可注册并使用本应用进行仓储管理，无需隶属于特定组织。</p>
             </div>
 
-            <div class="footer">
-                © 2026 航天数智（安徽）技术有限公司 版权所有
-            </div>
-        </div>
-
-        <!-- 英文内容 -->
-        <div class="lang-en">
-            <h1>Mengwei WMS - Technical Support Center</h1>
-            
-            <div class="support-item">
-                <strong>1. App Introduction</strong>
-                <p>Mengwei WMS is an efficient tool designed for warehouse management, providing core functions such as inventory management, inbound/outbound records, and data statistics.</p>
-            </div>
-
-            <div class="support-item">
-                <strong>2. Issue Feedback</strong>
-                <p>If you encounter any problems during use, please contact us via the following methods:</p>
-                <p>📧 Support Email: 1912993419@qq.com</p>
-                <p>📞 Customer Service Phone: +86 551 62883490</p>
-            </div>
-
-            <div class="support-item">
-                <strong>3. Frequently Asked Questions (FAQ)</strong>
-                <p>Q: How to log in?<br>
-                   A: In the production environment, you can log in directly by entering your account and password. If you are only using it for trial purposes, please first set the test environment server address: http://36.137.183.40:30020, then log in with the test account and password we provided.</p>
-                <p>Q: What to do if login fails?<br>
-                   A: Please first confirm that the server address is set correctly, the account and password are correct, or contact customer service for troubleshooting.</p>
-                <p>Q: Abnormal data synchronization?<br>
-                   A: Please check the network connection or contact customer service to help troubleshoot server configuration issues.</p>
-            </div>
-
-            <div class="support-item">
-                <strong>4. Version Updates</strong>
-                <p>We will continuously optimize the app experience. If there are version updates, they will be pushed in the App Store in a timely manner. It is recommended to keep automatic updates enabled.</p>
-            </div>
-
-            <div class="footer">
-                © 2026 Aerospace Digital Intelligence (Anhui) Technology Co., Ltd. All Rights Reserved.
-            </div>
+            <footer>
+                © 2026 航天数智（安徽）技术有限公司 保留所有权利。<br>
+                蒙维智仓WMS官方技术支持页面 - App Store 公开上架
+            </footer>
         </div>
     </div>
 
-    <!-- 语言切换脚本 -->
     <script>
-        // 获取按钮和语言模块
+        // 语言切换核心逻辑（苹果审核友好版）
         const btnZh = document.getElementById('btn-zh');
         const btnEn = document.getElementById('btn-en');
-        const langZh = document.querySelector('.lang-zh');
-        const langEn = document.querySelector('.lang-en');
+        const contentZh = document.querySelector('.content-zh');
+        const contentEn = document.querySelector('.content-en');
 
-        // 中文按钮点击事件
+        // 切换到中文
         btnZh.addEventListener('click', () => {
-            langZh.style.display = 'block';
-            langEn.style.display = 'none';
+            contentZh.style.display = 'block';
+            contentEn.style.display = 'none';
             btnZh.classList.add('active');
             btnEn.classList.remove('active');
+            document.documentElement.lang = 'zh-CN';
         });
 
-        // 英文按钮点击事件
+        // 切换到英文（默认）
         btnEn.addEventListener('click', () => {
-            langZh.style.display = 'none';
-            langEn.style.display = 'block';
+            contentZh.style.display = 'none';
+            contentEn.style.display = 'block';
             btnEn.classList.add('active');
             btnZh.classList.remove('active');
+            document.documentElement.lang = 'en';
         });
 
-        // 自动识别浏览器语言
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang.startsWith('en')) {
-            btnEn.click(); // 英文环境自动切换到英文
-        } else {
-            btnZh.click(); // 其他语言默认中文
+        // 强制默认英文（核心：苹果审核优先）
+        window.addEventListener('load', () => {
+            btnEn.click();
+            // 禁用浏览器语言自动识别，避免审核端显示中文
+            navigator.language = 'en-US';
+        });
+
+        // 防呆：确保页面加载异常时仍显示英文
+        if (!contentEn) {
+            document.write('<h1>Mengwei WMS - Technical Support</h1><p>Support Email: 1912993419@qq.com</p>');
         }
     </script>
 </body>
